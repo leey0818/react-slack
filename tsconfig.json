@@ -2,7 +2,7 @@
     "compilerOptions": {
         /* 기본 옵션 */
         "target": "es5", /* 사용할 특정 ECMAScript 버전 설정: 'ES3' (기본), 'ES5', 'ES2015', 'ES2016', 'ES2017', 'ES2018', 'ES2019', 'ES2020', 혹은 'ESNEXT'. */
-        "module": "es2015", /* 모듈을 위한 코드 생성 설정: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', 'es2020', or 'ESNext'. */
+        "module": "esnext", /* 모듈을 위한 코드 생성 설정: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', 'es2020', or 'ESNext'. */
         "jsx": "react", /* JSX 코드 생성 설정: 'preserve', 'react-native', 혹은 'react'. */
         "allowJs": true, /* 자바스크립트 허용 여부 */
         "declaration": true, /* '.d.ts' 파일 생성 여부. */
