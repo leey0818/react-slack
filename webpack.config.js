@@ -1,12 +1,14 @@
 const path = require('path');
 const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
 const isDevelopment = process.env.NODE_ENV !== 'production';
 const config = {
   mode: isDevelopment ? 'development' : 'production',
   devtool: isDevelopment ? 'eval-source-map' : 'source-map',
-  entry: './src/main.tsx',
+  entry: './src/main',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'app.js',
@@ -20,7 +22,7 @@ const config = {
   module: {
     rules: [
       {
-        test: /\.(ts|tsx)$/,
+        test: /\.(js|ts|tsx)$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
       },
@@ -35,9 +37,23 @@ const config = {
     ],
   },
   plugins: [
-    new ForkTsCheckerWebpackPlugin(),
+    new HtmlWebpackPlugin({ template: 'public/index.html' }),
+    new ForkTsCheckerWebpackPlugin({ async: false }),
     new webpack.EnvironmentPlugin({ NODE_ENV: isDevelopment ? 'development' : 'production' }),
   ],
+  devServer: {
+    contentBase: path.resolve(__dirname, 'dist'),
+    port: 3000,
+    hot: true,
+    historyApiFallback: true,
+    overlay: true,
+    progress: true,
+  }
 };
+
+if (isDevelopment) {
+  config.plugins.push(new webpack.HotModuleReplacementPlugin());
+  config.plugins.push(new ReactRefreshWebpackPlugin());
+}
 
 module.exports = config;

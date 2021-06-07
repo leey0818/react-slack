@@ -1,11 +1,8 @@
-const isDevelopment = process.env.NODE_ENV !== 'production';
-
 module.exports = {
   presets: [
     [
       '@babel/preset-env',
       {
-        debug: isDevelopment,
         targets: '> 0.25%, not dead',
         useBuiltIns: 'usage',
         corejs: 3,
@@ -16,4 +13,9 @@ module.exports = {
     '@babel/preset-react',
     '@babel/preset-typescript',
   ],
+  env: {
+    development: {
+      plugins: ['react-refresh/babel'],
+    },
+  },
 };
