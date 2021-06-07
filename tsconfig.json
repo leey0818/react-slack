@@ -23,16 +23,16 @@
         "skipLibCheck": true, /* 정의 파일의 타입 확인을 건너 뛸 지 여부 */
         "forceConsistentCasingInFileNames": true, /* 같은 파일에 대한 일관되지 않은 참조를 허용하지 않을 지 여부 */
         "paths": {
-            "@/*": ["src/*"],
-            // "@api/*": ["src/api/*"],
-            // "@hooks/*": ["src/hooks/*"],
-            // "@components/*": ["src/components/*"],
-            // "@styles/*": ["src/styles/*"],
+            // "@/*": ["src/*"],
+            "@api/*": ["src/api/*"],
+            "@hooks/*": ["src/hooks/*"],
+            "@components/*": ["src/components/*"],
+            "@styles/*": ["src/styles/*"],
             // "@static/*": ["stc/static/*"],
-            // "@utils/*": ["src/utils/*"],
+            "@utils/*": ["src/utils/*"],
             // "@types/*": ["src/types/*"],
-            // "@layouts/*": ["src/layouts/*"],
-            // "@pages/*": ["src/pages/*"],
+            "@layouts/*": ["src/layouts/*"],
+            "@pages/*": ["src/pages/*"],
         }
     },
     "include": ["src/**/*"],

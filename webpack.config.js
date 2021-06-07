@@ -16,7 +16,14 @@ const config = {
   resolve: {
     extensions: ['.js', '.ts', '.tsx'],
     alias: {
-      '@': path.resolve(__dirname, 'src'),
+      // '@': path.resolve(__dirname, 'src'),
+      '@api': path.resolve(__dirname, 'src/api'),
+      '@hooks': path.resolve(__dirname, 'src/hooks'),
+      '@components': path.resolve(__dirname, 'src/components'),
+      '@styles': path.resolve(__dirname, 'src/styles'),
+      '@utils': path.resolve(__dirname, 'src/utils'),
+      '@layouts': path.resolve(__dirname, 'src/layouts'),
+      '@pages': path.resolve(__dirname, 'src/pages'),
     },
   },
   module: {
@@ -48,7 +55,7 @@ const config = {
     historyApiFallback: true,
     overlay: true,
     progress: true,
-  }
+  },
 };
 
 if (isDevelopment) {
