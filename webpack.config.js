@@ -4,6 +4,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
+const dotenv = require('dotenv').config();
+if (dotenv.error) {
+  throw dotenv.error;
+}
+
 const isDevelopment = process.env.NODE_ENV !== 'production';
 const config = {
   mode: isDevelopment ? 'development' : 'production',
@@ -55,6 +60,12 @@ const config = {
     historyApiFallback: true,
     overlay: true,
     progress: true,
+    proxy: {
+      '/api': {
+        target: process.env.BACKEND_HOST,
+        changeOrigin: true,
+      },
+    },
   },
 };
 
