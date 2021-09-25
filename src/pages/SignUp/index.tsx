@@ -1,6 +1,6 @@
 import useInput from '@hooks/useInput';
 import axios from 'axios';
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { FormEvent, useCallback, useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 import { Form, Header, Input, Label, Button, LinkContainer, Error } from './styles';
@@ -27,11 +27,8 @@ const SignUp = () => {
   }, [password, passwordCheck]);
 
   const onSubmit = useCallback(
-    e => {
+    (e: FormEvent) => {
       e.preventDefault();
-
-      // 이미 처리중이면 무시
-      if (loading) return;
 
       // 항목 입력 확인
       let blankField = '';
@@ -70,10 +67,10 @@ const SignUp = () => {
         })
         .catch(err => {
           setLoading(false);
-          setSignUpError(err.response.data);
+          setSignUpError(err.response?.data);
         });
     },
-    [email, nickname, password, passwordCheck, mismatchPassword, loading, signUpError]
+    [email, nickname, password, passwordCheck, mismatchPassword]
   );
 
   return (
