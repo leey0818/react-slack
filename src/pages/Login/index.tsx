@@ -1,10 +1,13 @@
 import useInput from '@hooks/useInput';
+import fetcher from '@utils/fetcher';
 import axios from 'axios';
+import useSWR from 'swr';
 import React, { FormEvent, useCallback, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Header, Form, Label, Input, Button, LinkContainer, Error } from './styles';
 
 const Login = () => {
+  const { data, error } = useSWR('/api/users', fetcher);
   const [email, onChangeEmail] = useInput('');
   const [password, onChangePassword] = useInput('');
   const [loading, setLoading] = useState(false);
